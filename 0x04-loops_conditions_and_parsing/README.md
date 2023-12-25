@@ -1,1 +1,8 @@
-Exploring Bash Scripting if, until, while, for loop and others
+
+# 0x04. Loops, conditions and parsing
+## DevOps
+## Shell
+## Bash
+## Scripting
+ By: Sylvain Kalache
+ Weight: 1
