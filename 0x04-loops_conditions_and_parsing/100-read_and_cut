@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# print username, userid, home directory
+while read -r passwd; do
+  echo "$passwd" | cut -d ':' -f1,3,6
+done < "/etc/passwd"
