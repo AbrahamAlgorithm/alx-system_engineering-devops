@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+grep -q "listen\s\+80;" /etc/nginx/nginx.conf || echo "listen 80" | sudo tee -a /etc/nginx/nginx.conf >/dev/null
+sudo service nginx stop 2>&1 | grep -q "nginx stop/waiting"
