@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
-# Check Nginx configuration for port 80 listening
-
-grep -q "listen\s\+80;" /etc/nginx/nginx.conf
-
-if [ $? -ne 0 ]; then
-    # Add listen directive for port 80 in nginx.conf
-    sed -i '/^http\s*{/a \    listen 80;' /etc/nginx/nginx.conf
-
-    # Restart Nginx
-    systemctl restart nginx
-fi
+# trouble shooting why our server is not working
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+service nginx restart
