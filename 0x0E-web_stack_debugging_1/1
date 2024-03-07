@@ -1,0 +1,3 @@
+sed: couldn't open temporary file /etc/nginx/sedcRt4no: Permission denied
+System has not been booted with systemd as init system (PID 1). Can't operate.
+Failed to connect to bus: Host is down
