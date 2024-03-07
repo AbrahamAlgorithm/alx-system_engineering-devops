@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
-grep -q "listen\s\+80;" /etc/nginx/nginx.conf || echo "listen 80" | sudo tee -a /etc/nginx/nginx.conf >/dev/null
-sudo service nginx stop 2>&1 | grep -q "nginx stop/waiting"
+# trouble shooting why our server is not working
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
+service nginx restart
+truncate -s 0 /run/nginx.pid
