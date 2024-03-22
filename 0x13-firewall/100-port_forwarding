@@ -1,3 +1,9 @@
+##port forwarding
+# foward port 8080 to 80
+*nat
+:PREROUTING ACCEPT [0:0]
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
+COMMIT
 #
 # rules.before
 #
@@ -7,11 +13,6 @@
 #   ufw-before-output
 #   ufw-before-forward
 #
-
-*nat
-:PREROUTING ACCEPT [0:0]
--A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
-COMMIT
 
 # Don't delete these required lines, otherwise there will be errors
 *filter
