@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Configures the container
+
+service nginx stop
+
+sed -i 's/user\s*nginx;/user nginx nginx;/' /etc/nginx/nginx.conf
+service nginx start
+service nginx status
+nc -z 0 8080
