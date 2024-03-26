@@ -1,10 +1,22 @@
 #!/usr/bin/python3
-"""Importing Api from an url"""
+"""
+Importing API from an URL
+"""
+
 import requests
 import sys
 
-
 def get_employee_todo_progress(employee_id):
+    """
+    Fetches employee TODO list progress from REST API
+
+    Parameters:
+        employee_id (int): The ID of the employee
+
+    Returns:
+        None
+    """
+
     base_url = 'https://jsonplaceholder.typicode.com'
     user_url = f'{base_url}/users/{employee_id}'
     todo_url = f'{base_url}/todos?userId={employee_id}'
@@ -20,14 +32,10 @@ def get_employee_todo_progress(employee_id):
         total_tasks = len(todo_data)
         completed_tasks = [task for task in todo_data if task['completed']]
 
-        print(
-                "Employee {} is done with tasks({}/{})".format(
-                    employee_name, len(completed_tasks), total_tasks
-                    ) + ":"
-                )
+        print(f"Employee {employee_name} is done with tasks({len(completed_tasks)}/{total_tasks}):")
 
         for task in completed_tasks:
-            print("\t{}".format(task["title"]))
+            print(f"\t{task['title']}")
 
     except requests.exceptions.RequestException as e:
         print(f"Error fetching data: {e}")
