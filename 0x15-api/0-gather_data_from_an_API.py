@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""Importing Api from an url"""
 import requests
 import sys
 
