@@ -1,19 +1,26 @@
 #!/usr/bin/python3
-"""parses the title of all hot articles, and prints a sorted count of given keywords"""
+"""
+parses the title of all hot articles,
+and prints a sorted count of given keywords
+"""
 
 import requests
 import re
 from collections import defaultdict
 
+
 def count_words(subreddit, word_list, after=None, word_counts=None):
     """
-    Recursively count the number of occurrences of each word from word_list in the hot articles of the given subreddit.
+    Recursively count the number of occurrences of each word
+    from word_list in the hot articles of the given subreddit.
 
     Args:
         subreddit (str): The subreddit to search.
         word_list (list): A list of case-insensitive words to search for.
-        after (str, optional): The fullname of a reddit thing. Used for pagination.
-        word_counts (defaultdict, optional): A defaultdict to store the word counts.
+        after (str, optional): The fullname of a reddit thing.
+        Used for pagination.
+        word_counts (defaultdict, optional):
+        A defaultdict to store the word counts.
 
     Returns:
         defaultdict: A defaultdict containing the word counts.
@@ -29,7 +36,8 @@ def count_words(subreddit, word_list, after=None, word_counts=None):
         response.raise_for_status()
         data = response.json()
     except (requests.exceptions.RequestException, ValueError, KeyError):
-        return defaultdict(int)  # Return an empty defaultdict if an error occurs
+        return defaultdict(int)
+    # Return an empty defaultdict if an error occurs
 
     if word_counts is None:
         word_counts = defaultdict(int)
@@ -45,6 +53,7 @@ def count_words(subreddit, word_list, after=None, word_counts=None):
         count_words(subreddit, word_list, after, word_counts)
 
     return word_counts
+
 
 if __name__ == "__main__":
     import sys
